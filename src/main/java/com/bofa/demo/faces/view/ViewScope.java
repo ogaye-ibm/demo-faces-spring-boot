@@ -1,4 +1,4 @@
-package com.example.demojsf.view;
+package com.bofa.demo.faces.view;
 
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.config.Scope;

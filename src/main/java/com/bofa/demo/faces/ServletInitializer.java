@@ -1,4 +1,4 @@
-package com.example.demojsf;
+package com.bofa.demo.faces;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

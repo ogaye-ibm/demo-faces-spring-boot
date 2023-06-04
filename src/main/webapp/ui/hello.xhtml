@@ -1,15 +1,43 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: ogaye
+  Date: 6/4/23
+  Time: 10:27 AM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
 <h:head>
+    <title>Hello BofA</title>
 </h:head>
 
 <h:body>
-	<h:form>
-		<h:outputText id="greeting" value="Hello from #{legacyHelloBean.from} it's #{legacyHelloBean.date}" />
-		<h:commandButton value="Update Date"><f:ajax render="greeting"></f:ajax></h:commandButton>
-	</h:form>
+    <h:form>
+        <h:outputLabel for="name" value="Enter your name" required="true" />
+        <h:inputText id="name" value="#{legacyHelloBean.name}" />
+        <h:message for="name" />
+        <br />
+        <h:commandButton value="Say hello" action="#{legacyHelloBean.createMessage}">
+            <f:ajax execute="@form" render="@form" />
+        </h:commandButton>
+        <br />
+        #{legacyHelloBean.message}
+
+        <br />
+
+        <h:outputText id="greeting" value="It's #{legacyHelloBean.date}" />
+
+        <h:commandButton value="Update Date"><f:ajax render="greeting"></f:ajax></h:commandButton>
+
+    </h:form>
 </h:body>
+
 </html>

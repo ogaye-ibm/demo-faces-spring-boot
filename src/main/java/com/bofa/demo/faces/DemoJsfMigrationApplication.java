@@ -1,6 +1,6 @@
-package com.example.demojsf;
+package com.bofa.demo.faces;
 
-import com.example.demojsf.view.ViewScope;
+import com.bofa.demo.faces.view.ViewScope;
 import com.google.common.collect.ImmutableMap;
 import jakarta.faces.webapp.FacesServlet;
 import jakarta.servlet.ServletContext;
@@ -13,7 +13,7 @@ import org.springframework.web.context.ServletContextAware;
 
 
 @SpringBootApplication
-public class DemoJsfMigrationApplication implements ServletContextAware {
+public class DemoJsfMigrationApplication implements ServletContextAware{
     public static void main(String[] args) {
         SpringApplication.run(DemoJsfMigrationApplication.class, args);
     }
@@ -24,6 +24,19 @@ public class DemoJsfMigrationApplication implements ServletContextAware {
         configurer.setScopes(new ImmutableMap.Builder<String, Object>().put("view", new ViewScope()).build());
         return configurer;
     }
+    @Bean
+    public ServletRegistrationBean<FacesServlet> legacyServletBean() {
+
+        var legacyServlet = new FacesServlet();
+        var bean = new ServletRegistrationBean<FacesServlet>();
+
+        bean.setServlet(legacyServlet);
+        bean.addUrlMappings("*.xhtml");
+        bean.setLoadOnStartup(1);
+
+        return bean;
+    }
+
     @Override
     public void setServletContext(ServletContext servletContext) {
         // Faces context initialization
@@ -32,16 +45,5 @@ public class DemoJsfMigrationApplication implements ServletContextAware {
         servletContext.setInitParameter("faces.faces.FACELETS_SKIP_COMMENTS", "true");
     }
 
-    @Bean
-    public ServletRegistrationBean<FacesServlet> legacyServletBean() {
 
-        var legacyServlet = new FacesServlet();
-        var bean = new ServletRegistrationBean<FacesServlet>();
-
-        bean.setServlet(legacyServlet);
-        bean.addUrlMappings("*.xhtml", "/faces/*", "*.jsf");
-        //bean.setLoadOnStartup(1);
-
-        return bean;
-    }
 }
