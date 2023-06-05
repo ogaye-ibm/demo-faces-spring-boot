@@ -26,24 +26,16 @@ repositories {
 }
 
 dependencies {
-    //The next 3 are enough to run on JBoss EAP 8
-    //The next 3 are enough to run on JBoss EAP 8
-    // 4.0.2 fails on stand-alone mode, use 3.0.0-RC3 for now
     implementation  'org.springframework.boot:spring-boot-starter-web'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-    implementation  'org.glassfish:jakarta.faces:3.0.4' // 4.0.2
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-/*    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation  'org.glassfish:jakarta.faces:3.0.0-RC3' //4.0.2
 
-
-    implementation 'jakarta.platform:jakarta.jakartaee-api:10.0.0'
-    implementation 'org.jboss.weld.servlet:weld-servlet-shaded:4.0.0.Final'
-    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:2.0.0'*/
     providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper:11.0.0-M6'
-
     implementation 'com.google.guava:guava:29.0-jre'
 
-
+    //implementation 'jakarta.platform:jakarta.jakartaee-api:9.0.0'
 
     //compileOnly('jakarta.faces:jakarta.faces-api:3.0.0')
     //implementation 'jakarta.faces:jakarta.faces-api:3.0.0'

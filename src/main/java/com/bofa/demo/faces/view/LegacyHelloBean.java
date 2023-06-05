@@ -3,6 +3,7 @@ package com.bofa.demo.faces.view;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+//In Spring Boot application, JSF management Bean can also be declared to be Spring bean.
 @Component
 @Scope("view")
 public class LegacyHelloBean {

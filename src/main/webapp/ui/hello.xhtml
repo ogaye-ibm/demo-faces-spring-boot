@@ -33,9 +33,9 @@
 
         <br />
 
-        <h:outputText id="greeting" value="It's #{legacyHelloBean.date}" />
+        <h:commandButton value="Update Date"><f:ajax render="sayhello"></f:ajax></h:commandButton>
+        <h:outputText id="sayhello" value="  It's #{legacyHelloBean.date}" />
 
-        <h:commandButton value="Update Date"><f:ajax render="greeting"></f:ajax></h:commandButton>
 
     </h:form>
 </h:body>

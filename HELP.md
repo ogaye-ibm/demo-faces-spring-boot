@@ -20,3 +20,9 @@ These additional references should also help you:
 
 * [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
 
+  Step 1: Add an EL resolver entry in faces-config: SpringBeanFacesELResolver allows us to use JSF managed beans as Spring beans. 
+  Step 2: Register FacesServlet and add/customize contex
+  Step 3: Define Dependency. ...
+  Step 4: Add Dependency. ...
+  Step 5: Use Dependency.
+  
