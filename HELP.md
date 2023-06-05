@@ -25,4 +25,6 @@ These additional references should also help you:
   Step 3: Define Dependency. ...
   Step 4: Add Dependency. ...
   Step 5: Use Dependency.
+  ![alt text](./spring-boot-jsf-project-setup.png)
+
   
