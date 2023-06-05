@@ -25,6 +25,21 @@ These additional references should also help you:
   Step 3: Define Dependency. ...
   Step 4: Add Dependency. ...
   Step 5: Use Dependency.
-  ![alt text](./spring-boot-jsf-project-setup.png)
+
+JSF ELResolver that delegates to the Spring root WebApplicationContext, resolving name references to Spring-defined beans.
+
+Configure this resolver in your faces-config.xml file as follows:
+
+ <application>
+   ...
+   <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+ </application>
+
+All your JSF expressions can then implicitly refer to the names of Spring-managed service layer beans, for example in property values of JSF-managed beans:
+
+As Spring lacks the JSF view scope, also a custom scope to emulate it.
+If you are using JSF&Spring and decided upgrading to JSF 2.0, one thing you would probably like to have is the JSF 2.0’s built-in viewscope. Core Spring doesn’t provide this scope as it is more specific to JSF. No worries, using Spring’s custom scope feature it is straightforward to port JSF 2.0’s viewscope as a Spring bean scope.
+
+![alt text](./spring-boot-jsf-project-setup.png)
 
   
