@@ -8,7 +8,7 @@ plugins {
 }
 
 configurations.all{
-    exclude group: 'ch.qos.logback',  module: 'logback-classic'
+    //exclude group: 'ch.qos.logback',  module: 'logback-classic'
     //exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
 }
 
@@ -30,10 +30,10 @@ dependencies {
     //The next 3 are enough to run on JBoss EAP 8
     // 4.0.2 fails on stand-alone mode, use 3.0.0-RC3 for now
     implementation  'org.springframework.boot:spring-boot-starter-web'
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    //providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     implementation  'org.glassfish:jakarta.faces:3.0.4' // 4.0.2
 
-    //compileOnly 'jakarta.platform:jakarta.jakartaee-api:10.0.0'
+    ////compileOnly 'jakarta.platform:jakarta.jakartaee-api:10.0.0'
 
 /*    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
