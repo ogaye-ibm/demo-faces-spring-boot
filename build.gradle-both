@@ -41,7 +41,10 @@ dependencies {
     implementation 'org.jboss.weld.servlet:weld-servlet-shaded:4.0.0.Final'
     implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:2.0.0'*/
     providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper:11.0.0-M6'
+
     implementation 'com.google.guava:guava:29.0-jre'
+
+
 
     //compileOnly('jakarta.faces:jakarta.faces-api:3.0.0')
     //implementation 'jakarta.faces:jakarta.faces-api:3.0.0'

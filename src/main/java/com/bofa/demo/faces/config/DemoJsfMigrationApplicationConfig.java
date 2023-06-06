@@ -9,17 +9,18 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.context.ServletContextAware;
 
 @Configuration
-public class DemoJsfMigrationApplicationConfig { //implements ServletContextAware{
-
+public class DemoJsfMigrationApplicationConfig implements ServletContextAware {
     @Bean
     public static CustomScopeConfigurer viewScope() {
         CustomScopeConfigurer configurer = new CustomScopeConfigurer();
         configurer.setScopes(new ImmutableMap.Builder<String, Object>().put("view", new ViewScope()).build());
         return configurer;
     }
-/*    @Bean
+
+    @Bean
     public ServletRegistrationBean<FacesServlet> facesServletBean() {
         var facesServlet = new FacesServlet();
         var bean = new ServletRegistrationBean<FacesServlet>();
@@ -27,20 +28,8 @@ public class DemoJsfMigrationApplicationConfig { //implements ServletContextAwar
         bean.addUrlMappings("*.xhtml", "*.jsf");
         bean.setLoadOnStartup(1);
         return bean;
-    }*/
+    }
 
-/*    @Bean
-    public ServletRegistrationBean<FacesServlet> facesServletBean(ServletContext servletContext) {
-        var facesServlet = new FacesServlet();
-        var bean = new ServletRegistrationBean<FacesServlet>();
-        bean.setServlet(facesServlet);
-        bean.addUrlMappings("*.xhtml", "*.jsf");
-        bean.setLoadOnStartup(1);
-        servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
-        return bean;
-    }*/
-
-/*
     @Override
     public void setServletContext(ServletContext servletContext) {
         // Force Faces context initialization: http://stackoverflow.com/a/25509937/1199132
@@ -48,6 +37,4 @@ public class DemoJsfMigrationApplicationConfig { //implements ServletContextAwar
         servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
         servletContext.setInitParameter("faces.faces.FACELETS_SKIP_COMMENTS", "true");
     }
-*/
-
 }
