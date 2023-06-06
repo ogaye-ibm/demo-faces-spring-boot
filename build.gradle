@@ -6,14 +6,16 @@ plugins {
     id 'org.springframework.boot' version '3.1.0'
     id 'io.spring.dependency-management' version '1.1.0'
 }
-
 configurations.all{
-    //exclude group: 'ch.qos.logback',  module: 'logback-classic'
-    //exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    // Comment below line when building a WAR file that runs outside of a app server (java -jar or gradle bootRun)
+    // Keep it if you want the WAR file to run both inside and outside app server
+    exclude group: 'ch.qos.logback',  module: 'logback-classic'
+    // Comment below line when building a WAR file that runs outside of a app server (java -jar or gradle bootRun)
+    exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
 }
 
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
+
+group = 'com.bofa'
 sourceCompatibility = '17'
 
 war {
@@ -22,29 +24,40 @@ war {
 }
 
 repositories {
-    mavenCentral()
+    mavenCentral() //edit as needed
 }
 
 dependencies {
-    //The next 3 are enough to run on JBoss EAP 8
-    //The next 3 are enough to run on JBoss EAP 8
-    // 4.0.2 fails on stand-alone mode, use 3.0.0-RC3 for now
+
+    // --- For a WAR file file Jakarta EE Application Server
     implementation  'org.springframework.boot:spring-boot-starter-web'
-    //providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-    implementation  'org.glassfish:jakarta.faces:3.0.4' // 4.0.2
-
-    ////compileOnly 'jakarta.platform:jakarta.jakartaee-api:10.0.0'
-
-/*    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
-
-    implementation 'org.jboss.weld.servlet:weld-servlet-shaded:4.0.0.Final'
-    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:2.0.0'*/
-    providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper:11.0.0-M6'
+    compileOnly 'jakarta.platform:jakarta.jakartaee-api:10.0.0'
+    // Optional Util used here to store view in ImmutableMap
     implementation 'com.google.guava:guava:29.0-jre'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    //--- End Jakarta EE Application
 
-    //compileOnly('jakarta.faces:jakarta.faces-api:3.0.0')
-    //implementation 'jakarta.faces:jakarta.faces-api:3.0.0'
+    /*
+        // --- For a WAR file that runs stand-alone (outside an app server) with java -jar or gradle bootRun
+        implementation  'org.springframework.boot:spring-boot-starter-web'
+        implementation  'org.glassfish:jakarta.faces:3.0.4'
+        providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper:11.0.0-M6'
+        implementation 'com.google.guava:guava:29.0-jre'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    */
+
+    /*
+        // --- For WAR file that runs both stand-alone and inside an app server (for quick TEST only)
+        implementation  'org.springframework.boot:spring-boot-starter-web'
+        providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+        implementation  'org.glassfish:jakarta.faces:3.0.4' // 4.0.2
+        providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper:11.0.0-M6'
+        implementation 'com.google.guava:guava:29.0-jre'
+   */
+
+     // --- Uncomment when needed, when you add functionalities
+    //implementation 'org.jboss.weld.servlet:weld-servlet-shaded:4.0.0.Final'
+    //implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:2.0.0'*/
     //providedRuntime 'jakarta.servlet:jakarta.servlet-api:5.0.0-M1'
 }
 

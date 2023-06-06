@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.ServletContextAware;
 
 @Configuration
-public class DemoJsfMigrationApplicationConfig implements ServletContextAware {
+public class LegacyFacesApplicationConfig implements ServletContextAware {
     @Bean
     public static CustomScopeConfigurer viewScope() {
         CustomScopeConfigurer configurer = new CustomScopeConfigurer();
@@ -25,7 +25,7 @@ public class DemoJsfMigrationApplicationConfig implements ServletContextAware {
         var facesServlet = new FacesServlet();
         var bean = new ServletRegistrationBean<FacesServlet>();
         bean.setServlet(facesServlet);
-        bean.addUrlMappings("*.xhtml", "*.jsf");
+        bean.addUrlMappings("*.xhtml");
         bean.setLoadOnStartup(1);
         return bean;
     }

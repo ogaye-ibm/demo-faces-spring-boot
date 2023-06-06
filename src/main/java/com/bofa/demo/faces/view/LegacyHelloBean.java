@@ -1,12 +1,14 @@
 package com.bofa.demo.faces.view;
 
+import java.io.Serializable;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-//In Spring Boot application, JSF management Bean can also be declared to be Spring bean.
+@SuppressWarnings("serial")
 @Component
 @Scope("view")
-public class LegacyHelloBean {
+public class LegacyHelloBean implements Serializable {
     private String name;
     private String message;
 

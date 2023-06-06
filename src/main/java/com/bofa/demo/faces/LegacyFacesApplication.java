@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoJsfMigrationApplication {
+public class LegacyFacesApplication {
     public static void main(String[] args) {
-        SpringApplication.run(DemoJsfMigrationApplication.class, args);
+        SpringApplication.run(LegacyFacesApplication.class, args);
     }
 }
